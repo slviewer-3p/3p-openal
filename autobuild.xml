@@ -3,6 +3,8 @@
 <map>
     <key>package_description</key>
     <map>
+      <key>canonical_repo</key>
+      <string>https://github.com/slviewer-3p/3p-openal</string>
       <key>copyright</key>
       <string>Creative Labs</string>
       <key>description</key>
