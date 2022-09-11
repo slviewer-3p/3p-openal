@@ -1,6 +1,6 @@
 # cmake project file by Prakash Punnoor
 # improved by Ryan Pavlik
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.11.0)
 
 project(Alut C)
 
@@ -40,7 +40,8 @@ option(BUILD_USE_WERROR "enable fail on all warning" OFF)
 ###
 # Dependencies
 ###
-find_package(OpenAL REQUIRED)
+#find_package(OpenAL REQUIRED)
+find_library( OPENAL_LIBRARY openal PATHS ${OPENAL_LIB_DIR} )
 include_directories(${OPENAL_INCLUDE_DIR})
 
 ###
