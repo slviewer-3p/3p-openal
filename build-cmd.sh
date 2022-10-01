@@ -33,7 +33,7 @@ case "$AUTOBUILD_PLATFORM" in
     "linux64")
         mkdir -p openal
         pushd openal
-            cmake ../../$OPENAL_SOURCE_DIR -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS=" -m64 -msse2 -mfpmath=sse -pipe" 
+            cmake ../../$OPENAL_SOURCE_DIR -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="${AUTOBUILD_GCC_ARCH} ${LL_BUILD_RELEASE}" 
             make -j `nproc`
 			OPENAL_VERSION=`cat version.h  | gawk '/ ALSOFT_VERSION /{print $3}' | tr -d '"'`
         popd
@@ -43,7 +43,7 @@ case "$AUTOBUILD_PLATFORM" in
 
         mkdir -p freealut
         pushd freealut
-            cmake ../../$FREEALUT_SOURCE_DIR -DCMAKE_C_FLAGS="-m64 -msse2 -mfpmath=sse -pipe"  \
+            cmake ../../$FREEALUT_SOURCE_DIR -DCMAKE_C_FLAGS="${AUTOBUILD_GCC_ARCH} ${LL_BUILD_RELEASE}"  \
                 -DOPENAL_LIB_DIR="$stage/openal" -DOPENAL_INCLUDE_DIR="$TOP/$OPENAL_SOURCE_DIR/include"
             make -j `nproc`
 			
